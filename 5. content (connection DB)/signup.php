@@ -1,43 +1,19 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Programiranje web aplikacija</title>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="author" content="Alen Šimec">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-	</head>
-	<body id="top">
+<?php
+	# Stop Hacking attempt
+	if(!defined('__APP__')) {
+		die("Hacking attempt");
+	}
 
-		<!-- Header -->
-			<header id="header" class="skel-layers-fixed">
-				<h1><a href="#">Ion</a></h1>
-				<nav id="nav">
-					<ul>
-						<li><a href="index.html">Početna</a></li>
-						<li><a href="#">O nama</a></li>
-						<li><a href="#">Kontakt</a></li>
-						<li><a href="#">Proizvodi</a></li>
-						<li><a href="signup.php" class="button special">Prijava</a></li>
-					</ul>
-				</nav>
-			</header>
-
+print '
 		<!-- Main -->
 			<section id="main" class="wrapper style1">
 				<header class="major">
 				
-					<div class="wrapper style3">
-						<?php
+					<div class="wrapper style3">';
+		
 							if ($_POST['_action_'] == 'TRUE') {
-								echo '<h2>Hvala na prijavi</h2>
+								echo '<h2>HVALA NA PRIJAVI</h2>
+								<hr>
 								<p>Korisničko ime: ' . $_POST['username'] . '</p>
 								<p>Lozinka: ' . $_POST['password'] . '</p>
 								<p>Država: ' . $_POST['country'] . '</p>
@@ -45,10 +21,10 @@
 							}
 							else {
 								print '<h2>Forma za prijavu</h2>
-								<form action="signup.php" name="myForm" id="myForm" method="POST">
+								<form action="" name="myForm" id="myForm" method="POST">
 									<input type="hidden" id="_action_" name="_action_" value="TRUE">
 									<label for="username">Korisničko ime:</label>
-									<input type="text" id="username" name="username" placeholder="Korisničko ime" value="">
+									<input type="text" id="username" name="username" value="">
 									
 									<label for="password">Lozinka:</label>
 									<input type="password" id="password" name="password" value="">
@@ -67,7 +43,7 @@
 									<input type="submit" value="Pošalji" class="icon">
 								</form>';
 							}
-						?>
+				print '
 					</div>
 				</header>
 				<div class="container">
@@ -79,18 +55,4 @@
 					</section>
 					<hr class="major">
 				</div>
-			</section>
-
-		<!-- Footer -->
-		<footer id="footer">
-		<div class="container">
-			<ul class="copyright">
-				<li>&copy; Ion design. All rights reserved.</li>
-				<li>Design: <a href="#" target="_blank">Ion</a></li>
-				<li>Images: <a href="#" target="_blank">Unsplash</a></li>
-			</ul>
-		</div>
-	</footer>
-
-	</body>
-</html>
+			</section>';
