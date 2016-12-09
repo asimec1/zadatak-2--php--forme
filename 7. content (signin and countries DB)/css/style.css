@@ -141,7 +141,10 @@
 	.align-right {
 		text-align: right;
 	}
-	
+	small {
+		font-size: 90%;
+		font-style: italic;
+	}
 	/* Form */
 
 	form {

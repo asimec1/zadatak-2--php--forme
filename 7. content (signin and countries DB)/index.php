@@ -2,14 +2,14 @@
 	# Stop Hacking attempt
 	define('__APP__', TRUE);
 	
-	
+	# Database connection
+	include "dbconn.php";
+		
 	# Variables MUST BE INTEGERS
 	if(!isset($_GET['menu'])) { $_GET['menu'] =  1; $menu = (int)$_GET['menu']; }
 	
 	# Variables MUST BE STRINGS A-Z
     if(!isset($_POST['_action_']))  { $_POST['_action_'] = 'FALSE';  }
-	
-
 print '<!DOCTYPE HTML>
 <html>
 	<head>
@@ -35,7 +35,9 @@ print '<!DOCTYPE HTML>
 	print '
 	</header>';
 	if ($_GET['menu'] == 1) { include "home.php"; }
+	else if ($_GET['menu'] == 3) { include "contact.php"; }
 	else if ($_GET['menu'] == 5) { include "signup.php"; }
+	else if ($_GET['menu'] == 6) { include "signin.php"; }
 	# Include Footer Banner
 	include "footer.php";
 	print '

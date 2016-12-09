@@ -10,40 +10,34 @@ print '
 				<header class="major">
 				
 					<div class="wrapper style3">';
-		
-							if ($_POST['_action_'] == 'TRUE') {
-								echo '<h2>HVALA NA REGISTRACIJI</h2>
-								<hr>
-								<p>Vaši podaci su pohranjeni u bazu</p>';
-								
-								$query  = "INSERT INTO users (user_name, user_pass, user_email, user_country)";
-								$query .= " VALUES ('".$_POST['username']."', '".$_POST['password']."', '".$_POST['email']."', '".$_POST['country']."')";
-								$result = @mysql_query($query);
-							}
-							else {
-								print '<h2>Forma za registraciju</h2>
-								<form action="" name="myForm" id="myForm" method="POST">
-									<input type="hidden" id="_action_" name="_action_" value="TRUE">
+							print '<h2>Forma za registraciju</h2>
+								<form action="trigger.php" name="myForm" id="myForm" method="POST">
+									<input type="hidden" id="_action_" name="_action_" value="registration">
+									
 									<label for="username">Korisničko ime:*</label>
-									<input type="text" id="username" name="username" value="" required>
+									<input type="text" id="username" name="username" value="" pattern=".{5,10}" required>
+									<small>Korisničko ime mora imati minimalno 5, a maksimalno 10 znakova</small>
 									
 									<label for="password">Lozinka:*</label>
-									<input type="password" id="password" name="password" value="" required>
+									<input type="password" id="password" name="password" value="" pattern=".{4,}" required>
+									<small>Lozinka ime mora imati minimalno 4 znaka</small>
 									
 									<label for="email">Email:*</label>
 									<input type="email" id="email" name="email" value="" required>
 									
 									<label for="country">Država:</label>
 									<select name="country" id="country">
-										<option value="">molimo odaberite</option>
-										<option value="HR">Hrvatska</option>
-										<option value="DE">Njemačka</option>
-										<option value="US">Sjedinjene Američke Države</option>
+										<option value="">molimo odaberite</option>';
+										$query  = "SELECT * FROM countries";
+										$result = @mysql_query($query);
+										while($row = @mysql_fetch_array($result)) {
+											print '<option value="' . $row['country_code'] . '">' . $row['country_name'] . '</option>';
+										}
+										print '
 									</select>
-																		
+									
 									<input type="submit" value="Pošalji" class="icon">
 								</form>';
-							}
 				print '
 					</div>
 				</header>
