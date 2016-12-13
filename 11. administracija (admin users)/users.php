@@ -28,11 +28,10 @@
 									<th>Država</th>
 								</tr>
 							  </thead>
-							  <tbody>
-									';
+							  <tbody>';
 									$query  = "SELECT * FROM users";
-									$result = @mysql_query($query);
-									while($row = @mysql_fetch_array($result)) {
+									$result = @mysqli_query($MySQL, $query);
+									while($row = @mysqli_fetch_array($result)) {
 										print '
 									<tr>
 										<td><a href="index.php?menu=101&amp;id=' .$row['user_id']. '"><img src="images/user.png" alt="user"></a></td>
@@ -44,8 +43,8 @@
 										<td>';
 											$_query  = "SELECT * FROM countries";
 											$_query .= " WHERE country_code='" . $row['user_country'] . "'";
-											$_result = @mysql_query($_query);
-											$_row = @mysql_fetch_array($_result);
+											$_result = @mysqli_query($MySQL, $_query);
+											$_row = @mysqli_fetch_array($_result, MYSQLI_ASSOC);
 
 										print $_row['country_name'] . '</td>
 									</tr>';
@@ -53,21 +52,22 @@
 								print '</tbody>							
 							</table>';
 						}
+						#Show user info
 						else if ($_GET['menu'] == 101) {
 							$query  = "SELECT * FROM users";
 							$query .= " WHERE user_id=".$_GET['id'];
-							$result = @mysql_query($query);
-							$row = @mysql_fetch_array($result);
+							$result = @mysqli_query($MySQL, $query);
+							$row = @mysqli_fetch_array($result);
 							print '<h2>Profil korisnika ' . $row['user_firstname'] . ' ' . $row['user_lastname'] . '</h2>
 							<p>
-								<img src="userspic/' . $row['user_picture'] . '" alt="' . $row['user_firstname'] . ' ' . $row['user_lastname'] . '"><br>
+								<img src="userspic/' . $row['user_picture'] . '" style="width:300px" alt="' . $row['user_firstname'] . ' ' . $row['user_lastname'] . '"><br>
 								<b>Ime:</b> ' . $row['user_firstname'] . '<br>
 								<b>Prezime:</b> ' . $row['user_lastname'] . '<br>
 								<b>Korisnikčko ime:</b> ' . $row['user_name'] . '<br>';
 									$_query  = "SELECT * FROM countries";
 									$_query .= " WHERE country_code='" . $row['user_country'] . "'";
-									$_result = @mysql_query($_query);
-									$_row = @mysql_fetch_array($_result);
+									$_result = @mysqli_query($MySQL, $_query);
+									$_row = @mysqli_fetch_array($_result);
 									print '<b>Država:</b> ' .$_row['country_name'] . '<br>
 								<b>Datum registracije:</b> ' . $row['user_date'] . '
 							</p>
@@ -80,15 +80,15 @@
 							# Delete
 							$query  = "SELECT user_picture FROM users";
 							$query .= " WHERE user_id=".(int)$_GET['delete']." LIMIT 1";
-							$result = mysql_query($query);
-							$row = mysql_fetch_array($result);
+							$result = @mysqli_query($MySQL, $query);
+							$row = @mysqli_fetch_array($result);
 							@unlink("../userspic/". $row['user_picture']);
 
 							# delete from
 							$query  = "DELETE FROM users";
 							$query .= " WHERE user_id=".(int)$_GET['delete'];
 							$query .= " LIMIT 1";
-							$result = @mysql_query($query);
+							$result = @mysqli_query($MySQL, $query);
 
 							$_SESSION['message'] = '<p>Uspješno ste obrisali korisnika!';
 

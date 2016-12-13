@@ -13,8 +13,8 @@
 								print '<h2>Uređivanje korisnika</h2>';
 								$query  = "SELECT * FROM users";
 								$query .= " WHERE user_id='" . $_GET['edit'] . "'";
-								$result = @mysql_query($query);
-								$row = @mysql_fetch_array($result);
+								$result = @mysqli_query($MySQL, $query);
+								$row = @mysqli_fetch_array($result);
 							}
 							else { print '<h2>Forma za registraciju</h2>'; }
 							
@@ -53,8 +53,8 @@
 									<select name="country" id="country">
 										<option value="">molimo odaberite</option>';
 										$_query  = "SELECT * FROM countries";
-										$_result = @mysql_query($_query);
-										while($_row = @mysql_fetch_array($_result)) {
+										$_result = @mysqli_query($MySQL, $_query);
+										while($_row = @mysqli_fetch_array($_result)) {
 											print '<option value="' . $_row['country_code'] . '"';
 											if ($_GET['menu'] == 102) {
 												if ($row['user_country'] == $_row['country_code']) { print " selected"; }

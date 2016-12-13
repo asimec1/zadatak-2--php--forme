@@ -7,5 +7,5 @@
 	include "config.php";
 	
 	# Connect to MySQL database
-	$MySQL = @mysql_connect($conf['MySQL']['Host'], $conf['MySQL']['User'], $conf['MySQL']['Password']);
-	@mysql_select_db($conf['MySQL']['Database'], $MySQL) or die('<h1>Could not connect to the database at this time. Please try later.</h1>');
+	$MySQL = mysqli_connect($conf['MySQL']['Host'],$conf['MySQL']['User'],$conf['MySQL']['Password'],$conf['MySQL']['Database'])
+	or die('Error connecting to MySQL server.');
