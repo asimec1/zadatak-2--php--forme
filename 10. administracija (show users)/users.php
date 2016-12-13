@@ -14,6 +14,7 @@
 							<tr>
 								<th width="16"></th>
 								<th width="16"></th>
+								<th width="16"></th>
 								<th>Korisničko ime</th>
 								<th>E mail</th>
 								<th>Država</th>
@@ -26,6 +27,7 @@
 								while($row = @mysql_fetch_array($result)) {
 									print '
 								<tr>
+									<td><a href=""><img src="images/user.png" alt="user"></a></td>
 									<td><a href=""><img src="images/edit.png" alt="uredi"></a></td>
 									<td><a href=""><img src="images/delete.png" alt="obriši"></a></td>
 									<td><strong>' . $row['user_name'] . '</strong></td>

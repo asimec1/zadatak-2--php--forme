@@ -11,8 +11,17 @@
 				
 					<div class="wrapper style3">';
 							print '<h2>Forma za registraciju</h2>
-								<form action="trigger.php" name="myForm" id="myForm" method="POST">
+								<form action="trigger.php" name="myForm" id="myForm" method="POST" enctype="multipart/form-data">
 									<input type="hidden" id="_action_" name="_action_" value="registration">
+									
+									<label for="fname">Ime:*</label>
+									<input type="text" id="fname" name="fname" value="" required>
+									
+									<label for="lname">Prezime:*</label>
+									<input type="text" id="lname" name="lname" value="" required>
+									
+									<label for="profile">Slika:</label>
+									<input type="file" id="profile" name="profile" value="">
 									
 									<label for="username">Korisničko ime:*</label>
 									<input type="text" id="username" name="username" value="" pattern=".{5,10}" required>

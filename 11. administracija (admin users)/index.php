@@ -45,7 +45,7 @@ print '<!DOCTYPE HTML>
 	else if ($_GET['menu'] == 6) { include "signin.php"; }
 	
 	# Admin Control Panel
-	else if ($_GET['menu'] == 100) { include "users.php"; }
+	else if ($_GET['menu'] >= 100 && $_GET['menu'] <= 105) { include "users.php"; }
 	# Include Footer Banner
 	include "footer.php";
 	print '

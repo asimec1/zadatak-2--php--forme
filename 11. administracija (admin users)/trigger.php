@@ -52,6 +52,7 @@
 			$_SESSION['user']['valid'] = 'true';
 			$_SESSION['user']['id'] = $row['user_id'];
 			$_SESSION['user']['name'] = $row['user_name'];
+			$_SESSION['user']['pic'] = $row['user_picture'];
 		    $_SESSION['message'] = '<p>Dobrodošli ' . $_SESSION['user']['name'] . '</p>';
 			$redirect = "index.php?menu=100";
 		}
@@ -64,6 +65,17 @@
 			$redirect = "index.php?menu=5";
 		}
 		
+	}
+	
+	# ---------------------------------------------------------------------------#
+	# Edit user
+	else if($_POST['_action_'] == "edit_user") {
+		$query  = "UPDATE users SET user_firstname='" . $_POST['fname'] . "', user_lastname='" . $_POST['lname'] . "', user_name='" . $_POST['username'] . "', user_email='" . $_POST['email'] . "' , user_country='" . $_POST['country'] . "'";
+        $query .= " WHERE user_id=" . (int)$_POST['user_id'];
+        $query .= " LIMIT 1";
+        $result = @mysql_query($query);
+		$_SESSION['message'] = '<p>Uspješno ste izmjenili podatke korisnika!</p>';
+		$redirect = "index.php?menu=100";
 	}
 	
 	# Close MySQL connection

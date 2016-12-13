@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2016 at 09:28 AM
+-- Generation Time: Dec 13, 2016 at 10:39 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -307,7 +307,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_firstname`, `user_lastname`, `user_picture`, `user_name`, `user_pass`, `user_email`, `user_country`, `user_date`, `user_archive`) VALUES
-(14, 'Alen', 'Å imec', 'asimec.jpg', 'asimec', '$2y$12$MvEg.TeRkTn9zUUwc0ALyux..9cI5IXSukNi/V3qtyk3wy3DMxbW6', 'alen@tvz.hr', 'HR', '2016-12-13 08:27:43', 'Y');
+(14, 'Alen', 'Å imec', 'asimec.jpg', 'asimec1', '$2y$12$MvEg.TeRkTn9zUUwc0ALyux..9cI5IXSukNi/V3qtyk3wy3DMxbW6', 'alen@tvz.hr', 'HR', '2016-12-13 09:37:04', 'Y'),
+(15, 'sdasdasdas', 'dadadasdsa', '13817126_10209539927553201_1908264767_n.jpg', 'asimec2', '$2y$12$vop18VROd0HvSlvRpOSqJ.ehhpMTIn2mOZRpz5xQ3IFg2jBvGCh22', 'alen@tvz.hrs', 'BS', '2016-12-13 09:36:28', 'Y'),
+(16, 'dsasdasdad asd', 'd ad asdadas', 'Hands-on-Keyboard-Content-Development-iStock_000019971015Medium.jpg', 'asimec4', '$2y$12$zTafcOVuXD/Xsz6J9OM8kuLojQiHMnPtMku4yGJXTlcWueerBeSAG', 'alen@eburza.hr', 'DK', '2016-12-13 09:37:26', 'Y');
 
 --
 -- Indexes for dumped tables
@@ -338,7 +340,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
